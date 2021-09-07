@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocalObservable, observer } from 'mobx-react-lite';
 import { Store } from './store';
+import {Container, MapDiv} from '../styles/styles';
 import * as types from '../declarations/types';
 import Header from '../components/Header';
 import SearchBox from '../components/SearchBox';
@@ -14,9 +15,10 @@ const Home: React.FC = () => {
     store.fetchMovies();
   }, [store.search]);
   return (
-    <div>
+    <Container>
       <Header />
       <SearchBox value={store.search}  onChange={(search: string) => store.setSearch(search)} />
+      <MapDiv>
       {
         store.loading
           ? <p>loading</p>
@@ -26,7 +28,8 @@ const Home: React.FC = () => {
             ))
           )
       }
-    </div>
+      </MapDiv>
+    </Container>
   )
 }
 export default observer(Home);
