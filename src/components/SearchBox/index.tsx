@@ -12,8 +12,8 @@ interface SearchBoxProps {
 const SearchBox: React.FC<SearchBoxProps> = ({value, onChange}) => {
 const [displayValue, setDisplayValue] = useState(value)
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setDisplayValue(event.target.value)
-        onChange(event.target.value);
+    setDisplayValue(event.target.value)
+        setTimeout(() =>onChange(event.target.value), 2000)
   };
   console.log(onChange)
     return (
