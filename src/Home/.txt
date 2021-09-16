@@ -1,0 +1,6 @@
+1 Onde o computed do mobx seria usado de forma correta no seu projeto?
+Ele pode ser usado para mostrar os top 5 filmes com a letra pesquisada, para mostrar apenas os filmes adultos.
+
+Onde o autorun seria usado de forma pratica na sua aplicação?
+
+Ele pode ser usado para escutar um valor passado para o input e com esse valor, reagir e adicionar +1 caso digite uma letra especifica.
