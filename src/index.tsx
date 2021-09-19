@@ -5,7 +5,7 @@ import Home from './Home';
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle/>
+    <GlobalStyle />
     <Home />
   </React.StrictMode>,
   document.getElementById('root')
