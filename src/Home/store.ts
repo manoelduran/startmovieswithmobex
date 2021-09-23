@@ -4,13 +4,14 @@ import api from "../services/API";
 
 export class Store {
     public searchDisposer: IReactionDisposer;
+    public searchDisposeSearch: IReactionDisposer;
     constructor() {
         makeAutoObservable(this);
         this.searchDisposer = reaction(
             () => this.search,
             () => this.fetchMovies(),
         );
-        this.searchDisposer = reaction(
+        this.searchDisposeSearch = reaction(
             () => this.isSearch,
             isSearch => {
                 if (isSearch) {
@@ -52,6 +53,9 @@ export class Store {
     };
     public dispose() {
         this.searchDisposer?.();
+    }
+    public disposesearch(){
+        this.searchDisposeSearch?.();
     }
     public get top5Movies() {
         return this.movies

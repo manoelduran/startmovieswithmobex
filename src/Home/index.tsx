@@ -13,8 +13,11 @@ const Home: React.FC = () => {
   const store = useLocalObservable(() => new Store());
 
   React.useEffect(() => {
-    return store.dispose;
-  }, [store.dispose]);
+    return store.dispose
+  }, [store]);
+  React.useEffect(() => {
+    return store.searchDisposeSearch
+  }, [store]);
   return (
     <Container>
       <Header />
