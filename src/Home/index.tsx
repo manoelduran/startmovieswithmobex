@@ -14,10 +14,10 @@ const Home: React.FC = () => {
 
   React.useEffect(() => {
     return store.dispose
-  }, [store]);
+  }, [store.searchDisposer]);
   React.useEffect(() => {
     return store.searchDisposeSearch
-  }, [store]);
+  }, [store.searchDisposeSearch]);
   return (
     <Container>
       <Header />
