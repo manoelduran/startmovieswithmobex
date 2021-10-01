@@ -1,7 +1,7 @@
 import React from 'react';
+import { Flex, Text, Grid } from "@chakra-ui/react";
 import { useLocalObservable, observer } from 'mobx-react-lite';
 import { Store } from './store';
-import { Container, MapDiv, MapDivTop10, ReactionDiv } from '../styles/styles';
 import * as types from '../declarations/types';
 import Header from '../components/Header';
 import SearchBox from '../components/SearchBox';
@@ -19,36 +19,76 @@ const Home: React.FC = () => {
     return store.searchDisposeSearch
   }, [store.searchDisposeSearch]);
   return (
-    <Container>
+    <Flex
+      direction="column"
+      align="center"
+      wrap="wrap"
+    >
       <Header />
       <SearchBox value={store.search} onChange={(search: string) => store.setSearch(search)} />
-      <ReactionDiv>
-        <h1> Você pesquisou {store.chooseA} por Batman</h1>
-      </ReactionDiv>
-      <MapDiv>
+      <Flex
+        mt="32px"
+        w="100%"
+        align="flex-end"
+        justify="flex-end"
+      >
+        <Text
+          mr="32px"
+          fontSize="20px"
+        >
+          Você pesquisou {store.chooseA} por Batman
+        </Text>
+      </Flex>
+      <Flex
+        mt="20px"
+        direction="column"
+        align="center"
+        justify="center"
+      >
         {
           store.loading
-            ? <p>loading...</p>
+            ? <Text
+              fontSize="32px"
+            >
+              loading...
+            </Text>
             : (
               <>
-
-                <h1>Top 10 em ordem alfabética</h1>
-                <MapDivTop10>
+                <Text
+                  mt="10px"
+                  fontSize="32px"
+                >
+                  Top 4 em ordem alfabética
+                </Text>
+                <Grid
+                  mt="15px"
+                  templateColumns="repeat(3,1fr)"
+                  gridGap="30px"
+                >
                   {store.OrderMovies.map((movie: types.Movie) => (
                     <MovieCard key={movie.id} movie={movie} />
                   ))}
-                </MapDivTop10>
-                <h1>Movies</h1>
-                <MapDivTop10>
+                </Grid>
+                <Text
+                  mt="10px"
+                  fontSize="32px"
+                >
+                  Movies
+                </Text>
+                <Grid
+                  mt="15px"
+                  templateColumns="repeat(3,1fr)"
+                  gridGap="30px"
+                >
                   {store.movies.map((movie: types.Movie) => (
                     <MovieCard key={movie.id} movie={movie} />
                   ))}
-                </MapDivTop10>
+                </Grid>
               </>
             )
         }
-      </MapDiv>
-    </Container>
+      </Flex>
+    </Flex>
   )
 }
 export default observer(Home);
